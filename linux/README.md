@@ -2,6 +2,12 @@
 
 ## Tools
 
+### Clipboard
+
+```sh
+sudo apt install xclip  # clipboard cmd line tool for X11
+```
+
 ### Disk Creation
 
 ```sh
