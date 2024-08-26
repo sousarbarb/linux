@@ -2,6 +2,13 @@
 
 ## Tools
 
+### Bluetooth
+
+```sh
+# GTK+ Bluetooth Manager
+sudo apt install blueman
+```
+
 ### Clipboard
 
 ```sh
