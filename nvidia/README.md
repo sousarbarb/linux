@@ -22,6 +22,8 @@
 
 **Prerequisites**
 
+- Disable dynamic GPU in BIOS (usually, Linux distros only work with the
+  discrete GPU setting...)
 - Install VDPAU (required for hardware-accelerated video playback)
   ```sh
   sudo apt install libvdpau-dev vdpau-driver-all vdpauinfo
@@ -47,6 +49,7 @@
   blacklist nouveau
   options nouveau modeset=0
   EOF
+  # paste the previous lines as multi-line command (instead of a single line!)
   ```
 
 **Uninstall previous NVIDIA drivers**
@@ -77,7 +80,15 @@ See
 https://download.nvidia.com/XFree86/Linux-x86_64/550.107.02/README/installdriver.html.
 
 ```sh
+# NOTE: do not forget to exit X session and all OpenGL apps (see prerequisites)
+cd ~/Downloads
 
+sudo su
+sh NVIDIA-Linux-x86_64-550.107.02.run
+update-initramfs -u
+reboot
+
+# if you set-default multi-user.target, do not forget to switch to graphical
 ```
 
 **Installation (from Ubuntu official documentation)**
