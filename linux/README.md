@@ -9,6 +9,18 @@
 sudo apt install blueman
 ```
 
+### Calculator
+
+```sh
+# GNU (an arbitrary precision calculator language)
+bc --interactive
+# KCalc (KDE)
+kcalc
+# Qalculate!
+flatpak install flathub io.github.Qalculate               # GTK UI
+flatpak install flathub io.github.Qalculate.qalculate-qt  # Qt UI
+```
+
 ### Clipboard
 
 ```sh
