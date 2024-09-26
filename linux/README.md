@@ -1,5 +1,13 @@
 # Linux
 
+## Setup
+
+### System Clock in Dual Boot
+
+```sh
+sudo timedatectl set-local-rtc 1
+```
+
 ## Tools
 
 ### Bluetooth
