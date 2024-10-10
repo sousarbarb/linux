@@ -14,6 +14,8 @@ sudo apt install texlive-full
 
 ## Usage
 
+### Makefile
+
 ```makefile
 .PHONY : all latex bibtex view clean distclean
 
@@ -42,4 +44,12 @@ clean:
 
 distclean:clean
 	rm -f $(TARGET).pdf
+```
+
+Source: https://arxiv.org/html/2406.11599v1 (from Cyrill Stachniss).
+
+### latexmk
+
+```sh
+latexmk sousa2025.tex -bibtex -pdf
 ```
