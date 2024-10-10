@@ -53,6 +53,11 @@ sudo apt install arandr
 arandr  # then, you can export / save your monitor configuration for xrandr
 ```
 
+### Office
+
+- [LibreOffice](https://pt.libreoffice.org/)
+- [WPS](https://www.wps.com/)
+
 ### Process Monitoring
 
 ```sh
@@ -60,3 +65,9 @@ ps aux  # processes snapshot (a: all; u: additional info; x: background procs)
 top     # real-time viewof system activity (q to quit)
 htop    # more human readable (q to quit)
 ```
+
+### Screenshot
+
+- [Flameshot](https://flameshot.org/)
+- [Kazam](https://launchpad.net/kazam)
+- [Shutter](https://shutter-project.org/)
