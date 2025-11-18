@@ -1,5 +1,7 @@
 # Linux
 
+Please do not paste and execute the commands, verify all commands and see if it makes sense for your case!
+
 ## Installation
 ### Ubuntu
 - Rufus for USB boot drive
@@ -33,6 +35,26 @@ sudo apt install nvidia-driver-580
 sudo apt install cuda-toolkit-13-0
 sudo update-initramfs -u
 reboot
+
+# Add the following lines to your ~/.bashrc
+# ## NVIDIA DEVELOPMENT ENVIRONMENT
+# export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+sudo apt install libglfw3-dev libglfw3 libglfw3-doc
+sudo apt install freeglut3-dev
+sudo apt install libopenmpi-dev openmpi-bin openmpi-doc
+sudo apt install libfreeimage-dev
+mkdir ~/dev/nvidia/ -p
+cd ~/dev/nvidia/
+git clone https://github.com/NVIDIA/cuda-samples.git
+cd cuda-samples
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
+ll Samples/
+
+# Then try any samples to verify if all ok with your CUDA installation
 ```
 
 ## Setup
