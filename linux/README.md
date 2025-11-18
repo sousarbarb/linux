@@ -19,7 +19,20 @@ sudo apt install nano vim vim-doc neovim
 ```
 **NVIDIA CUDA** _(assuming NVIDIA drivers already installed)_
 ```sh
-
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt update
+sudo init 3
+# insert your username + password
+sudo apt --purge remove *nvidia*
+sudo apt autoremove
+sudo apt update
+sudo apt dist-upgrade
+sudo apt install libvdpau-dev libvdpau-doc vdpau-driver-all vdpauinfo
+sudo apt install nvidia-driver-580
+sudo apt install cuda-toolkit-13-0
+sudo update-initramfs -u
+reboot
 ```
 
 ## Setup
