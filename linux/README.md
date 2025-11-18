@@ -16,7 +16,7 @@ Please do not paste and execute the commands, verify all commands and see if it 
 sudo timedatectl set-local-rtc 1
 sudo apt update
 sudo apt dist-upgrade
-sudo apt install build-essential cmake cmake-doc gimp git git-doc gnuplot inkscape net-tools nmap terminator vlc xclip
+sudo apt install build-essential cmake cmake-doc gimp git git-doc gnuplot inkscape net-tools nmap terminator vlc xclip xpad
 sudo apt install nano vim vim-doc neovim
 sudo apt install doxygen doxygen-doc doxygen-gui
 sudo apt install texlive-full
@@ -164,6 +164,7 @@ ssh -T git@github.com
 ```
 **Sway**
 ```sh
+sudo apt install libnvidia-egl-wayland-dev
 sudo apt install blueman grimshot
 sudo apt install sway swayidle swaylock
 # Waybar dependencies (maybe should n ot be needed, just for compiling from the source...)
@@ -189,9 +190,43 @@ sudo apt install         \
   upower                 \
   libxkbregistry-dev
 sudo apt install waybar
+sudo apt install wofi
 sudo apt install fonts-font-awesome fonts-fork-awesome
 sudo apt install python3-i3ipc
 sway --unsupported-gpu
+```
+```sh
+$ sudo nano /usr/share/wayland-sessions/sway.desktop
+$ cat /usr/share/wayland-sessions/sway.desktop
+[Desktop Entry]
+Name=Sway
+Comment=An i3-compatible Wayland compositor
+Exec=sway --unsupported-gpu
+Type=Application
+DesktopNames=sway
+
+$ sudo nano /etc/environment
+$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+
+GDK_BACKEND=wayland,x11
+QT_QPA_PLATFORM=wayland;xcb
+SDL_VIDEODRIVER=wayland
+CLUTTER_BACKEND=wayland
+
+#XDG_CURRENT_DESKTOP=sway
+#XDG_SESSION_TYPE=wayland
+#XDG_SESSION_DESKTOP=sway
+
+QT_AUTO_SCREEN_SCALE_FACTOR=1
+QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+GBM_BACKEND=nvidia-drm
+__GLX_VENDOR_LIBRARY_NAME=nvidia
+LIBVA_DRIVER_NAME=nvidia
+WLR_DRM_NO_ATOMIC=1
+WLR_NO_HARDWARE_CURSORS=1
+WLR_RENDER_NO_EXPLICIT_SYNC=1
 ```
 
 **Git Repositories**
