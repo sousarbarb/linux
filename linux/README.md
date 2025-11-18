@@ -18,6 +18,8 @@ sudo apt update
 sudo apt dist-upgrade
 sudo apt install build-essential cmake cmake-doc git git-doc net-tools nmap terminator
 sudo apt install nano vim vim-doc neovim
+sudo apt install doxygen doxygen-doc doxygen-gui
+sudo apt install texlive-full
 ```
 **NVIDIA CUDA** _(assuming NVIDIA drivers already installed)_
 ```sh
@@ -87,7 +89,8 @@ sudo systemctl status docker
 
 sudo groupadd docker
 sudo usermod -aG docker $USER
-newgrp docker
+
+# logout and login again possibly...
 
 docker run hello-world
 ```
@@ -109,6 +112,46 @@ sudo nvidia-ctk config --set nvidia-container-cli.no-cgroups --in-place
 
 sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
 ```
+**Visual Studio Code**
+```sh
+# PlatformIO Requirement
+sudo apt install python3-venv
+```
+```json
+{
+  "chat.agent.enabled": false,
+  "chat.disableAIFeatures": true,
+  "cmake.configureOnOpen": false,
+  "cSpell.language": "en,pt_PT",
+  "editor.renderWhitespace": "none",
+  "editor.rulers": [
+    80, 120
+  ],
+  "editor.tabSize": 2,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "git.openRepositoryInParentFolders": "always",
+  "terminal.integrated.stickyScroll.enabled": false,
+  "window.title": "${dirty}${rootName}",
+  "workbench.colorTheme": "Night Owl Light (No Italics)"
+}
+```
+- cschlosser.doxdocgen
+- ms-azuretools.vscode-docker
+- ms-azuretools.vscode-containers
+- ms-python.python
+- ms-vscode.cpptools-extension-pack
+- ms-vscode-remote.remote-containers
+- ms-vscode-remote.remote-ssh
+- platformio.platformio-ide
+- redhat.vscode-xml
+- redhat.vscode-yaml
+- sdras.night-owl
+- streetsidesoftware.code-spell-checker
+- streetsidesoftware.code-spell-checker-portuguese
+- tomoki1207.pdf
 
 ## Setup
 
