@@ -164,7 +164,10 @@ ssh -T git@github.com
 ```
 **Sway**
 ```sh
-sudo apt install sway
+sudo apt install blueman
+sudo apt install sway swayidle swaylock
+sudo apt install waybar
+sudo apt install python3-i3ipc
 sway --unsupported-gpu
 ```
 
