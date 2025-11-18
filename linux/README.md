@@ -1,5 +1,27 @@
 # Linux
 
+## Installation
+### Ubuntu
+- Rufus for USB boot drive
+- try/install ubuntu
+- set reduce animations in the installation
+- enable both drivers and additional utilities (MP4, etc.)
+- create EFI (512MB?) + `/` root + swap partitions
+
+### Initial Setup
+**Utilities**
+```sh
+sudo timedatectl set-local-rtc 1
+sudo apt update
+sudo apt dist-upgrade
+sudo apt install build-essential cmake cmake-doc git git-doc net-tools nmap terminator
+sudo apt install nano vim vim-doc neovim
+```
+**NVIDIA CUDA** _(assuming NVIDIA drivers already installed)_
+```sh
+
+```
+
 ## Setup
 
 ### System Clock in Dual Boot
