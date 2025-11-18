@@ -162,6 +162,11 @@ cat ~/.ssh/git.pub | xclip -selection clipboard
 # paste the SSH key into your git remote server
 ssh -T git@github.com
 ```
+**Sway**
+```sh
+sudo apt install sway
+sway --unsupported-gpu
+```
 
 **Git Repositories**
 
