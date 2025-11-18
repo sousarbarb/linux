@@ -16,7 +16,7 @@ Please do not paste and execute the commands, verify all commands and see if it 
 sudo timedatectl set-local-rtc 1
 sudo apt update
 sudo apt dist-upgrade
-sudo apt install build-essential cmake cmake-doc git git-doc net-tools nmap terminator
+sudo apt install build-essential cmake cmake-doc git git-doc net-tools nmap terminator xclip
 sudo apt install nano vim vim-doc neovim
 sudo apt install doxygen doxygen-doc doxygen-gui
 sudo apt install texlive-full
@@ -152,6 +152,16 @@ sudo apt install python3-venv
 - streetsidesoftware.code-spell-checker
 - streetsidesoftware.code-spell-checker-portuguese
 - tomoki1207.pdf
+
+** SSH Keys**
+```sh
+ssh-keygen -t ed25519 -C "sousa.ricardob@outlook.com" -f ~/.ssh/git
+eval $(ssh-agent -s) 
+ssh-add ~/.ssh/git
+cat ~/.ssh/git.pub | xclip -selection clipboard
+# paste the SSH key into your git remote server
+ssh -T git@github.com
+```
 
 ## Setup
 
