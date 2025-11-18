@@ -16,7 +16,7 @@ Please do not paste and execute the commands, verify all commands and see if it 
 sudo timedatectl set-local-rtc 1
 sudo apt update
 sudo apt dist-upgrade
-sudo apt install build-essential cmake cmake-doc git git-doc net-tools nmap terminator xclip
+sudo apt install build-essential cmake cmake-doc gimp git git-doc gnuplot inkscape net-tools nmap terminator vlc xclip
 sudo apt install nano vim vim-doc neovim
 sudo apt install doxygen doxygen-doc doxygen-gui
 sudo apt install texlive-full
@@ -161,6 +161,17 @@ ssh-add ~/.ssh/git
 cat ~/.ssh/git.pub | xclip -selection clipboard
 # paste the SSH key into your git remote server
 ssh -T git@github.com
+```
+
+**Git Repositories**
+
+Possibly, when copying git repositories, it will appear git differences referred to the file modes.
+```sh
+# Set directories to 755 (executable needed to enter directories)
+find latex/ -type d -exec chmod 755 {} \;
+
+# Set files to 644 (non-executable)
+find latex/ -type f -exec chmod 644 {} \;
 ```
 
 ## Setup
