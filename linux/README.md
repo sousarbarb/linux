@@ -209,14 +209,9 @@ $ sudo nano /etc/environment
 $ cat /etc/environment
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 
-GDK_BACKEND=wayland,x11
-QT_QPA_PLATFORM=wayland;xcb
-SDL_VIDEODRIVER=wayland
+QT_QPA_PLATFORM="wayland;xcb"
+SDL_VIDEODRIVER="wayland,x11"
 CLUTTER_BACKEND=wayland
-
-#XDG_CURRENT_DESKTOP=sway
-#XDG_SESSION_TYPE=wayland
-#XDG_SESSION_DESKTOP=sway
 
 QT_AUTO_SCREEN_SCALE_FACTOR=1
 QT_WAYLAND_DISABLE_WINDOWDECORATION=1
@@ -224,9 +219,11 @@ QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 GBM_BACKEND=nvidia-drm
 __GLX_VENDOR_LIBRARY_NAME=nvidia
 LIBVA_DRIVER_NAME=nvidia
+
 WLR_DRM_NO_ATOMIC=1
 WLR_NO_HARDWARE_CURSORS=1
 WLR_RENDER_NO_EXPLICIT_SYNC=1
+WLR_RENDERER=vulkan
 ```
 
 **Git Repositories**
