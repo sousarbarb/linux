@@ -153,7 +153,7 @@ sudo apt install python3-venv
 - streetsidesoftware.code-spell-checker-portuguese
 - tomoki1207.pdf
 
-** SSH Keys**
+**SSH Keys**
 ```sh
 ssh-keygen -t ed25519 -C "sousa.ricardob@outlook.com" -f ~/.ssh/git
 eval $(ssh-agent -s) 
@@ -224,6 +224,20 @@ WLR_DRM_NO_ATOMIC=1
 WLR_NO_HARDWARE_CURSORS=1
 WLR_RENDER_NO_EXPLICIT_SYNC=1
 WLR_RENDERER=vulkan
+```
+**OBS Studio**
+```sh
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt update
+sudo apt install obs-studio
+```
+- Check if screen sharing is working (probably not due to wayland...)
+```sh
+# If screen sharing not working...
+sudo apt install xdg-desktop-portal-wlr
+
+# possibly reboot for 'exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway'
+# in config file of sway
 ```
 
 **Git Repositories**
