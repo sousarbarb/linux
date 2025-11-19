@@ -165,7 +165,7 @@ ssh -T git@github.com
 **Sway**
 ```sh
 sudo apt install libnvidia-egl-wayland-dev
-sudo apt install blueman grimshot
+sudo apt install brightnessctl blueman grimshot
 sudo apt install sway swayidle swaylock
 # Waybar dependencies (maybe should n ot be needed, just for compiling from the source...)
 sudo apt install         \
@@ -193,6 +193,14 @@ sudo apt install waybar
 sudo apt install wofi
 sudo apt install fonts-font-awesome fonts-fork-awesome
 sudo apt install python3-i3ipc
+
+sudo groupadd input
+sudo groupadd video
+sudo usermod -aG input $USER
+sudo usermod -aG video $USER
+
+# login and logout?...
+
 sway --unsupported-gpu
 ```
 ```sh
