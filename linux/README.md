@@ -36,7 +36,7 @@ $ sudo chown ${USER}:${USER} /mnt/data/
 sudo timedatectl set-local-rtc 1
 sudo apt update
 sudo apt dist-upgrade
-sudo apt install build-essential cmake cmake-doc gimp git git-doc gnuplot inkscape net-tools nmap terminator vlc xclip xpad
+sudo apt install build-essential clang-format cmake cmake-doc gimp git git-doc gnuplot inkscape net-tools nmap terminator vlc xclip xpad
 sudo apt install nano vim vim-doc neovim
 sudo apt install doxygen doxygen-doc doxygen-gui
 sudo apt install texlive-full
@@ -139,13 +139,20 @@ sudo apt install python3-venv
 ```
 ```json
 {
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.formatting": "clangFormat",
   "chat.agent.enabled": false,
   "chat.disableAIFeatures": true,
   "cmake.configureOnOpen": false,
   "cSpell.language": "en,pt_PT",
+  "editor.formatOnSave": true,
   "editor.renderWhitespace": "none",
   "editor.rulers": [
-    80, 120
+    80,
+    120
   ],
   "editor.tabSize": 2,
   "explorer.confirmDragAndDrop": false,
