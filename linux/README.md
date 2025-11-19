@@ -11,6 +11,26 @@ Please do not paste and execute the commands, verify all commands and see if it 
 - create EFI (512MB?) + `/` root + swap partitions
 
 ### Initial Setup
+**Additional Disk**
+```sh
+$ cat /etc/fstab 
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/disk/by-uuid/6051c411-63b3-4d75-bfa0-0d41f038d0ba none swap sw 0 0
+# / was on /dev/nvme0n1p6 during curtin installation
+/dev/disk/by-uuid/5b8c95c8-afaf-4d13-9689-22e72b2352e9 / ext4 defaults 0 1
+# /boot/efi was on /dev/nvme0n1p1 during curtin installation
+/dev/disk/by-uuid/445E-7656 /boot/efi vfat defaults 0 1
+
+/dev/disk/by-uuid/7cec3379-0266-4b85-bcc8-790c93b90144 /mnt/data ext4 auto,nouser,exec,dev,rw,noatime,nofail 0 2
+
+$ sudo chown ${USER}:${USER} /mnt/data/
+```
 **Utilities**
 ```sh
 sudo timedatectl set-local-rtc 1
