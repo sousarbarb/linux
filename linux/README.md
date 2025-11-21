@@ -36,7 +36,7 @@ $ sudo chown ${USER}:${USER} /mnt/data/
 sudo timedatectl set-local-rtc 1
 sudo apt update
 sudo apt dist-upgrade
-sudo apt install build-essential clang-format cmake cmake-doc gimp git git-doc gnuplot inkscape net-tools nmap terminator vlc xclip xpad
+sudo apt install build-essential clang-format cmake cmake-doc gimp git git-doc gnuplot htop inkscape net-tools nmap terminator vlc xclip xpad
 sudo apt install nano vim vim-doc neovim
 sudo apt install doxygen doxygen-doc doxygen-gui
 sudo apt install texlive-full
