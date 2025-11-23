@@ -236,6 +236,8 @@ services:
 
 Tried several ways of using native Wayland (uncomment some options above and install inside Docker `sudo apt install qtwayland5 libnvidia-egl-wayland1`), but not successful at least with Rviz (ROS 1 Noetic, Ubuntu 20).
 
+DO NOT FORGET `$ xhost +`!
+
 **Visual Studio Code**
 ```sh
 # PlatformIO Requirement
