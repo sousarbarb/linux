@@ -133,7 +133,108 @@ sudo nvidia-ctk config --set nvidia-container-cli.no-cgroups --in-place
 sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
 ```
 
-**>>>>> WARNING: no-cgroups should be false (https://stackoverflow.com/a/78137688)! <<<<<**
+_**>>>>> WARNING: no-cgroups should be false (https://stackoverflow.com/a/78137688)! <<<<<**_
+```sh
+$ cat /etc/nvidia-container-runtime/config.toml 
+#accept-nvidia-visible-devices-as-volume-mounts = false
+#accept-nvidia-visible-devices-envvar-when-unprivileged = true
+disable-require = false
+supported-driver-capabilities = "compat32,compute,display,graphics,ngx,utility,video"
+#swarm-resource = "DOCKER_RESOURCE_GPU"
+
+[nvidia-container-cli]
+#debug = "/var/log/nvidia-container-toolkit.log"
+environment = []
+#ldcache = "/etc/ld.so.cache"
+ldconfig = "@/sbin/ldconfig.real"
+load-kmods = true
+no-cgroups = false
+#path = "/usr/bin/nvidia-container-cli"
+#root = "/run/nvidia/driver"
+#user = "root:video"
+
+[nvidia-container-runtime]
+#debug = "/var/log/nvidia-container-runtime.log"
+log-level = "info"
+mode = "auto"
+runtimes = ["runc", "crun"]
+
+[nvidia-container-runtime.modes]
+
+[nvidia-container-runtime.modes.cdi]
+annotation-prefixes = ["cdi.k8s.io/"]
+default-kind = "nvidia.com/gpu"
+spec-dirs = ["/etc/cdi", "/var/run/cdi"]
+
+[nvidia-container-runtime.modes.csv]
+mount-spec-path = "/etc/nvidia-container-runtime/host-files-for-container.d"
+
+[nvidia-container-runtime.modes.legacy]
+cuda-compat-mode = "ldconfig"
+
+[nvidia-container-runtime-hook]
+path = "nvidia-container-runtime-hook"
+skip-mode-detection = false
+
+[nvidia-ctk]
+path = "nvidia-ctk"
+```
+
+_**And how to use GUI apps with Docker?**_
+```yaml
+services:
+  ros1noetic:
+    image: osrf/ros:noetic-desktop-full
+    container_name: ros1noetic
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/dri:/dev/dri
+      - ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}
+      # - /home/sousarbarb97/datasets:/home/datasets
+      - /mnt/data/datasets/:/home/datasets/
+      - /home/sousarbarb97/dev/phd/srrg-software/srrg_system:/home/srrg_ws/src/srrg_system/
+      - ./:/home/ros_ws/src/inesctec_mrdt_slam_distmap_2d/
+
+      # - ~/.Xauthority:/root/.Xauthority:rw
+      # - ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:/tmp/runtime-user/${WAYLAND_DISPLAY}
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_QPA_PLATFORM=xcb
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+
+      # - QT_QPA_PLATFORM=wayland
+      # - QT_X11_NO_MITSHM=1
+      # - XDG_RUNTIME_DIR=/tmp/runtime-user
+      # - XDG_SESSION_TYPE=wayland
+      # - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
+
+      # - DISPLAY=${DISPLAY}
+      # - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
+      # - QT_QPA_PLATFORM=wayland
+      # - QT_X11_NO_MITSHM=1
+      # - NVIDIA_VISIBLE_DEVICES=all
+      # - NVIDIA_DRIVER_CAPABILITIES=all
+      # - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
+      # - __GLX_VENDOR_LIBRARY_NAME=nvidia
+      # - LIBGL_ALWAYS_INDIRECT=0
+      # - LIBGL_ALWAYS_SOFTWARE=0
+
+    tty: true
+    devices:
+      - /dev/dri:/dev/dri
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+```
+
+Tried several ways of using native Wayland (uncomment some options above and install inside Docker `sudo apt install qtwayland5 libnvidia-egl-wayland1`), but not successful at least with Rviz (ROS 1 Noetic, Ubuntu 20).
 
 **Visual Studio Code**
 ```sh
