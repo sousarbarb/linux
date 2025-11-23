@@ -132,6 +132,9 @@ sudo nvidia-ctk config --set nvidia-container-cli.no-cgroups --in-place
 
 sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
 ```
+
+**>>>>> WARNING: no-cgroups should be false (https://stackoverflow.com/a/78137688)! <<<<<**
+
 **Visual Studio Code**
 ```sh
 # PlatformIO Requirement
