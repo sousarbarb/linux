@@ -381,6 +381,24 @@ sudo apt install xdg-desktop-portal-wlr
 # in config file of sway
 ```
 
+**DaVinci Resolve**
+
+1. Download DaVinci Resolve (`.zip`)
+2. Unzip the `.run` program
+    - Please change to a GNOME session to avoid configuring a polkit agent...
+    - Change `QT_QPA_PLATFORM="wayland;xcb"`to `QT_QPA_PLATFORM="xcb"` in the `/etc/environment` file
+3. Install missing dependencies (`sudo apt install libapr1 libaprutil1 libasound2-dev libglib2.0-0`)
+4. Execute the `.run` program, with `SKIP_PACKAGE_CHECK=1 ./DaVinci_Resolve_20.2.3_Linux.run -i`
+5. Execute the following commands to overcome Resolve not launching
+   (see https://www.reddit.com/r/davinciresolve/comments/1d7cr2w/optresolvebinresolve_symbol_lookup_error/)
+```sh
+cd /opt/resolve/libs/
+mkdir disabled-libraries
+sudo mv libglib* disabled-libraries
+sudo mv libgio* disabled-libraries
+sudo mv libgmodule* disabled-libraries
+```
+
 **Git Repositories**
 
 Possibly, when copying git repositories, it will appear git differences referred to the file modes.
